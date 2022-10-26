@@ -12,10 +12,11 @@ services:
     expose:
       - 3306
     volumes:
-      - "./database:/var/lib/mysql"
+      - "database:/var/lib/mysql"
+
+volumes:
+  database:
 
 networks:
-  ### You may create network externally
-  ### example: `docker network create -d bridge mf`
   mf:
     external: True
