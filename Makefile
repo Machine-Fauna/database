@@ -13,8 +13,12 @@ db-back:
 	docker exec -i mf-db psql -U mf mf -c "create user \"back\" with encrypted password 'back';"
 	docker exec -i mf-db psql -U mf mf -c "grant all privileges on database \"back\" to \"back\";"
 
-db: 
-	db-back
+db-test:
+	docker exec -i mf-db psql -U mf mf -c "create database \"test\";"
+	docker exec -i mf-db psql -U mf mf -c "create user \"test\" with encrypted password 'test';"
+	docker exec -i mf-db psql -U mf mf -c "grant all privileges on database \"test\" to \"test\";"
+
+db: db-back db-test
 
 start:
 	docker-compose up -d
