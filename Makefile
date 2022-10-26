@@ -9,14 +9,14 @@ mysql:
 	docker exec -it mf-db mysql --user=mf --password=mf
 
 db-back:
-	docker exec -i mf-db mysql --user=mf --password=mf -c "create database back;"
-	docker exec -i mf-db mysql --user=mf --password=mf -c "create user 'back'@'%' with encrypted password 'back';"
-	docker exec -i mf-db mysql --user=mf --password=mf -c "grant all privileges on back.* to 'back'@'%';"
+	docker exec -i mf-db mysql --user=mf --password=mf -e "create database back;"
+	docker exec -i mf-db mysql --user=mf --password=mf -e "create user 'back'@'%' with encrypted password 'back';"
+	docker exec -i mf-db mysql --user=mf --password=mf -e "grant all privileges on back.* to 'back'@'%';"
 
 db-test:
-	docker exec -i mf-db mysql --user=mf --password=mf -c "create database test;"
-	docker exec -i mf-db mysql --user=mf --password=mf -c "create user 'test'@'%' with encrypted password 'test';"
-	docker exec -i mf-db mysql --user=mf --password=mf -c "grant all privileges on test.* to 'test'@'%';"
+	docker exec -i mf-db mysql --user=mf --password=mf -e "create database test;"
+	docker exec -i mf-db mysql --user=mf --password=mf -e "create user 'test'@'%' with encrypted password 'test';"
+	docker exec -i mf-db mysql --user=mf --password=mf -e "grant all privileges on test.* to 'test'@'%';"
 
 db: db-back db-test
 
