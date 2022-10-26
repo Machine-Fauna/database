@@ -1,0 +1,24 @@
+---
+
+name: Development
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deliver:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+
+      - name: Setup application on the dev
+        run: docker compose up --build -d
+    
+  setup:
+    runs-on: self-hosted
+    steps:
+      - name: Setup databases
+        run: make db
