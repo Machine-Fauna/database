@@ -19,6 +19,7 @@ jobs:
     
   setup:
     runs-on: self-hosted
+    needs: deliver
     steps:
       - name: Setup databases
         run: make db
