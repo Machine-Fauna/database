@@ -1,0 +1,21 @@
+---
+version: "3.7"
+services:
+  mf-db:
+    image: mysql:5.7
+    container_name: mf-db
+    environment:
+      MYSQL_DATABASE: 'mf'
+      MYSQL_USER: 'mf'
+      MYSQL_PASSWORD: 'mf'
+      MYSQL_ROOT_PASSWORD: 'mf'
+    ports:
+      - 3306:3306
+    volumes:
+      - "./database:/var/lib/mysql"
+
+networks:
+  ### You may create network externally
+  ### example: `docker network create -d bridge mf`
+  mf:
+    external: True
