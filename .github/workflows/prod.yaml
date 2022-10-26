@@ -17,9 +17,9 @@ jobs:
       - name: Setup dev dependencies
         run: docker compose up --build -d
     
-  setup:
-    runs-on: self-hosted
-    needs: deliver
-    steps:
-      - name: Setup databases
-        run: make db
+  # setup:
+  #   runs-on: self-hosted
+  #   needs: deliver
+  #   steps:
+  #     - name: Setup databases
+  #       run: make db
