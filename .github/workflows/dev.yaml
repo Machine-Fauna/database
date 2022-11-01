@@ -9,17 +9,12 @@ on:
 
 jobs:
   deliver:
-    runs-on: self-hosted
+    runs-on: 
+      - self-hosted
+      - development
     steps:
       - name: Checkout 
         uses: actions/checkout@v2
 
       - name: Setup dev dependencies
         run: docker compose up --build -d
-    
-  # setup:
-  #   runs-on: self-hosted
-  #   needs: deliver
-  #   steps:
-  #     - name: Setup databases
-  #       run: make db
